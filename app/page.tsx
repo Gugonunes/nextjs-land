@@ -1,6 +1,7 @@
 "use client";
 import Form from "./components/form";
 import Card from "./components/card";
+import Relato from "./components/relato";
 
 const LoginPage = () => {
   return (
@@ -27,6 +28,7 @@ const LoginPage = () => {
       <section className="bg-grey">
         <div>
           <h3>Planos</h3>
+          <Relato name="Ana Júlia" score="images/estrelas.png" text="Lorem Ipsum" image="images/ana-julia.png" />
         </div>
       </section>
       <section className="bg-black">

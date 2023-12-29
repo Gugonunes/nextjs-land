@@ -1,11 +1,18 @@
 import Button from './button'
 
 const Form = () => {
-  const handleClick = () => {
-    alert('Botão clicado!');
-  };
-
   let inputClass = 'px-2 rounded-2xl'
+
+  const makeApiRequest = async () => {
+    try {
+      const response = await fetch('/api/hello');
+      const users = await response.json();
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    } finally {
+      alert('Cadastro realizado com sucesso!')
+    }
+  }
 
   return (
     <div>
@@ -34,8 +41,8 @@ const Form = () => {
           <br />
           <input className={inputClass} type="password" name="password" />
         </label>
-        <Button type='primary' label="Assine agora!" onClick={handleClick} />
-        <Button type='secondary' label="Chama no zap!" onClick={handleClick} />
+        <Button type='primary' label="Assine agora!" onClick={makeApiRequest} />
+        <Button type='secondary' label="Chama no zap!" onClick={makeApiRequest} />
       </form>
     </div>
   );
