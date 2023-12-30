@@ -4,12 +4,12 @@ interface CardProps {
 }
 
 const Card = (props: CardProps) => {
-  let classes = 'flex flex-col items-center justify-center';
+  let classes = 'flex flex-col items-center justify-center w-1/3';
 
   return (
     <div className={classes}>
-      <p className="text-white">{props.text}</p>
       <img src={props.image} alt="Logo" />
+      <p className="text-white">{props.text}</p>
     </div>
   );
 }
