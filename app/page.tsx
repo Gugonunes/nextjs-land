@@ -4,6 +4,7 @@ import Card from "./components/card"
 import Relato from "./components/relato"
 import Botao from "./components/botao"
 import RedeSocialBotao from "./components/redeSocialBotao"
+import { ToastContainer } from "react-toastify";
 
 const LoginPage = () => {
   return (
@@ -113,6 +114,7 @@ const LoginPage = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   )
 }

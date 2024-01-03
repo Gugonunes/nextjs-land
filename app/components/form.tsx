@@ -1,41 +1,54 @@
 import Button from './botao'
+import { useEffect } from 'react'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Form = () => {
   let inputClass = 'px-2 rounded-2xl w-full h-[32px] p-1'
 
-  const makeApiRequest = async () => {
+  const makeApiRequest = async (nome: string, email: string, phone: string, city: string) => {
     try {
-      const response = await fetch('/api/hello')
+      const response = await fetch('/api/apiRequest')
       const users = await response.json()
     } catch (error) {
-      console.error('Error fetching users:', error)
+      toast.error('Erro ao cadastrar! Tente novamente')
+      return false
     } finally {
-      alert('Cadastro realizado com sucesso!')
+      toast.success('Cadastro realizado com sucesso!')
     }
   }
-  if (typeof document !== 'undefined') {
-    console.log('teste')
-    let form = document.getElementById('form')
-    form?.addEventListener('submit', (form) => {
-      form.preventDefault()
+  useEffect(() => {
+    const handleFormSubmit = (event: { preventDefault: () => void }) => {
+      event.preventDefault();
 
-      let nome = (document.getElementById('username') as HTMLInputElement).value
-      let email = (document.getElementById('email') as HTMLInputElement).value
-      let phone = (document.getElementById('phone') as HTMLInputElement).value
-      let city = (document.getElementById('city') as HTMLInputElement).value
-      let respostaPergunta = (document.getElementById('respostaPergunta') as HTMLInputElement).value
-      if(respostaPergunta !== '12') {
-        alert('A resposta da pergunta está errada!')
-        return false
+      let nome = (document.getElementById('username') as HTMLInputElement).value;
+      let email = (document.getElementById('email') as HTMLInputElement).value;
+      let phone = (document.getElementById('phone') as HTMLInputElement).value;
+      let city = (document.getElementById('city') as HTMLInputElement).value;
+      let respostaPergunta = (document.getElementById('respostaPergunta') as HTMLInputElement).value;
+
+      if (respostaPergunta !== '12') {
+        toast.error('A resposta da pergunta está errada! Tente novamente');
+        return false;
       }
-      handleSubmit(nome, email, phone, city)
-      return true
-    })
-  }
 
-  const handleSubmit = (nome: any, email: any, phone:any, city: any) => {
-    console.log('Cadastro realizado com sucesso' + nome + email + phone + city)
-  }
+      makeApiRequest(nome, email, phone, city);
+      return true;
+    };
+
+    if (typeof document !== 'undefined') {
+      let form = document.getElementById('form');
+      form?.addEventListener('submit', handleFormSubmit);
+    }
+
+    return () => {
+      // quando o componente é desmontado, retiramos o eventlistener
+      if (typeof document !== 'undefined') {
+        let form = document.getElementById('form');
+        form?.removeEventListener('submit', handleFormSubmit);
+      }
+    };
+  }, []);
 
   return (
     <div className="max-w-[360px] mx-auto">
@@ -60,7 +73,7 @@ const Form = () => {
         </label>
         <br />
         <label>
-          <b>Qual é a sua cidade?</b>
+          <b>Qual é a sua cidade? *</b>
           <br />
           <input className={inputClass} id="city" required/>
         </label>
@@ -72,7 +85,7 @@ const Form = () => {
         </label>
         <div className="max-w-[280px] mx-auto grid gap-3 mt-4">
           <Button tipo='primary' label="Me cadastrar" extraClasses='text-lg font-bold rounded-[20px] px-4 w-full' />
-          <Button tipo='secondary' label="Chama no zap!" onClick={makeApiRequest} extraClasses='text-lg rounded-[20px] w-full' />
+          <Button tipo='secondary' label="Chama no zap!" extraClasses='text-lg rounded-[20px] w-full' />
       </div>
       </form>
     </div>
