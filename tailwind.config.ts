@@ -15,7 +15,10 @@ const config: Config = {
       },
       backgroundColor: {
         'e6': '#E6E6E6',
+        'laranja': '#F8971F',
+        'verde': '#25D366',
       },
+      screens: ['sm', 'md', 'lg', 'xl'],
     },
   },
   plugins: [],

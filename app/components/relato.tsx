@@ -1,34 +1,34 @@
 interface RelatoProps {
-  name: string;
-  score: string;
-  text: string;
-  image: string;
+  nome: string
+  nota: string
+  texto: string
+  imagem: string
 }
 
 const Relato = (props: RelatoProps) => {
   let classes =
-    "flex flex-col items-center justify-center border border-4 border-solid border-orange-500 rounded-[30px] p-4 max-w-[255px]";
+    "flex flex-col items-center justify-center border border-4 border-solid border-orange-500 rounded-[30px] p-2 max-w-[255px] mx-auto mb-[15px]"
 
   return (
     <div className={classes}>
       <div className="flex">
         <img
           className="max-w-[120px] max-h-[120px] flex-1"
-          src={props.image}
-          alt="Logo"
+          src={props.imagem}
+          alt="Foto de pessoa"
         />
-        <div>
+        <div className="grid grid-rows-3 items-center pl-[10px]">
           <img
-            className="max-w-[100px] max-h-[20px] flex-1"
-            src={props.score}
-            alt="score"
+            className="max-w-[100px] max-h-[20px] flex-1 self-end"
+            src={props.nota}
+            alt="Nota"
           />
-          <p className="text-orange-500">{props.name}</p>
+          <p className="text-orange-500 text-2xl row-span-2">{props.nome}</p>
         </div>
       </div>
-      <p className="text-black">{props.text}</p>
+      <p className="text-black leading-4 p-3 text-sm">{props.texto}</p>
     </div>
-  );
-};
+  )
+}
 
-export default Relato;
+export default Relato

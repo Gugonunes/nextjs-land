@@ -25,3 +25,15 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+p, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arial';
+}
+
+h2 b {
+  color: #F8971F;
+}
+
+label b {
+  font-size: 12px;
+  line-height: 1.5;
+}
