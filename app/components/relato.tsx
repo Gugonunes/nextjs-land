@@ -7,7 +7,7 @@ interface RelatoProps {
 
 const Relato = (props: RelatoProps) => {
   let classes =
-    "flex flex-col items-center justify-center border border-4 border-solid border-orange-500 rounded-[30px] p-2 max-w-[255px] mx-auto mb-[15px]"
+    "flex flex-col items-center border border-4 border-solid border-orange-500 rounded-[30px] p-2 py-4 max-w-[255px] mx-auto mb-[15px] min-h-[455px]"
 
   return (
     <div className={classes}>

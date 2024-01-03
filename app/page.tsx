@@ -9,12 +9,16 @@ const LoginPage = () => {
   return (
     <div>
       <section className="bg-e6 py-2">
-        <div className="lg:flex lg:justify-center lg:gap-x-20 items-center mx-auto lg:w-[960px] w-[320px] grid justify-items-center gap-y-4">
+        <div className="lg:flex lg:justify-center lg:gap-x-20 items-center mx-auto lg:w-[960px] w-[320px] grid justify-items-center gap-y-4 p-2">
           <div >
-            <img src="images/logogrande.png"></img>
+            <a href="https://www.opyt.net.br/" target="_blank">
+              <img src="images/logogrande.png" alt="Logo OPYT, escrito OPYT em branco"></img>
+            </a>
           </div>
           <div >
-            <Botao tipo="primary" label="Assine agora!" extraClasses="text-lg" />
+            <a  href="https://www.opyt.net.br/Trindade/planos" target="_blank">
+              <Botao tipo="primary" label="Assine agora!" extraClasses="text-lg" />
+            </a>
           </div>
           <div >
             <Botao tipo="secondary" label="Chama no zap!" extraClasses="text-lg" />
@@ -22,7 +26,7 @@ const LoginPage = () => {
         </div>
       </section>
       <section className="bg-e6 flex py-[40px]">
-        <div className="mx-auto lg:w-[960px] w-[320px] lg:flex items-end">
+        <div className="mx-auto lg:w-[960px] w-[320px] lg:flex items-end p-2">
           <div className="lg:w-1/2 flex-1 w-full">
             <h2>
               Procurando o <b>melhor plano de internet</b>, com maior velocidade e
@@ -30,8 +34,8 @@ const LoginPage = () => {
               melhores filmes e séries utilizando a <b>melhor internet da região.</b>
             </h2>
             <div className="grid gap-y-3 mt-[20px]">
-              <img src="images/1gb.png" className="mx-auto lg:max-w-[403px]"></img>
-              <img src="images/500mb.png" className="mx-auto lg:max-w-[403px]"></img>
+              <img src="images/1gb.png" className="mx-auto lg:max-w-[403px]" alt="imagem apresentando o Plano 1 GB + HBO max + Estádio TNT por apenas 124,90 reais"></img>
+              <img src="images/500mb.png" className="mx-auto lg:max-w-[403px]" alt="imagem apresentando o Plano 500 MB + HBO max + Estádio TNT por apenas 114,90 reais"></img>
             </div>
           </div>
           <div className="lg:w-1/2 flex-1 w-full mt-[20px]">
@@ -40,7 +44,7 @@ const LoginPage = () => {
         </div>
       </section>
       <section className="bg-black py-[40px]">
-        <div className="mx-auto lg:w-[960px] w-[320px]">
+        <div className="mx-auto lg:w-[960px] w-[320px] p-2">
           <h3 className="text-white font-bold text-4xl text-center">
             A Opyt não para de crescer e já somos mais de:
           </h3>
@@ -59,8 +63,8 @@ const LoginPage = () => {
         </div>
       </section>
       <section className="bg-e6 py-[40px]">
-        <div className="mx-auto lg:w-[960px] w-[320px] md:w-[720px]">
-          <img src="images/planos.png"></img>
+        <div className="mx-auto lg:w-[960px] w-[320px] md:w-[720px] p-2">
+          <img src="images/planos.png" alt="imagem de um jovem mexendo no celular com o texto 'Planos de internet feitos pra te conectar com tudo' "></img>
           <Botao tipo="secondary" label="Chama no zap!" extraClasses="text-3xl md:w-full mt-[20px] mx-auto block"/>
         </div>
       </section>
@@ -79,7 +83,7 @@ const LoginPage = () => {
               <Relato
                 nome="Rúlio"
                 nota="images/estrelas.png"
-                texto=""
+                texto="Sou cliente Opyt desde a época da Nemesis e estou muito satisfeito quanto a velocidade/estabilidade da internet, mas também em relação ao atendimento que sempre recebi da empresa/funcionários. Sério, nunca imaginei que poderia transmitir minhas partidas com tanta suavidade. A velocidade é tipo turbo, zero lag, e a qualidade da transmissão é tão nítida que dá para ver cada detalhe do meu gameplay"
                 imagem="images/rulio.png"
               />
             </div>
@@ -87,7 +91,7 @@ const LoginPage = () => {
               <Relato
                 nome="Luiz Alcantra"
                 nota="images/estrelas.png"
-                texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc est odio, lobortis quis odio et, consequat fringilla enim. Sed massa mauris, mattis nec pellentesque vitae, blandit sed mi. Curabitur eleifend fringilla nunc sit amet consequat. Nulla at rutrum nisl. Nulla hendrerit orci a purus lacinia, at egestas augue hendrerit. Donec iaculis est non felis aliquet maximus."
+                texto="A estabilidade e a velocidade da sua rede são notáveis, proporcionando uma experiência online fluida e sem interrupções. É evidente que o seu compromisso com a qualidade e o serviço ao cliente é notável e faz uma diferença significativa na vida de seus usuários. Parabéns pela excelência em fornecer um serviço tão confiável e de alta qualidade."
                 imagem="images/luiz.png"
               />
             </div>
@@ -96,14 +100,16 @@ const LoginPage = () => {
       </section>
       <section className="bg-black py-[20px]">
         <div className="mx-auto lg:w-[960px] w-[320px] lg:flex items-center grid justify-items-center gap-y-4">
-          <img src="images/logo.png" className="flex-1 max-w-[72px] max-h-[37px]"></img>
+          <a href="https://www.opyt.net.br/" target="_blank">
+            <img src="images/logo.png" className="flex-1 max-w-[72px] max-h-[37px]" alt="Logo OPYT, escrito OPYT em branco"></img>
+          </a>
           <h3 className="text-white flex-1 ml-[20px]">
             © 2023 Opyt LTDA. Todos os direitos reservados
           </h3>
           <div className="grid grid-cols-3 gap-x-3 flex-1 justify-items-center max-w-[250px]">
-            <RedeSocialBotao label="facebook" icone="images/facebook.png" />
-            <RedeSocialBotao label="instagram" icone="images/instagram.png" />
-            <RedeSocialBotao label="linkedin" icone="images/linkedin.png" />
+            <RedeSocialBotao label="facebook" icone="images/facebook.png" link="https://www.facebook.com/opytnet/" />
+            <RedeSocialBotao label="instagram" icone="images/instagram.png" link="https://www.instagram.com/opytnet/" />
+            <RedeSocialBotao label="linkedin" icone="images/linkedin.png" link="https://www.linkedin.com/company/opyt/"/>
           </div>
         </div>
       </section>
