@@ -6,6 +6,7 @@ export const config = {
   },
 }
 
+// implementei apenas o método POST pois era o único necessário para esse projeto
 export async function POST(req: any, res: any) {
   if (req.method === 'POST') {
     const prisma = new PrismaClient()

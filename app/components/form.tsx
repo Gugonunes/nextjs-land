@@ -8,13 +8,14 @@ const Form = () => {
 
   const makeApiRequest = async (nome: string, email: string, telefone: string, cidade: string) => {
     try {
+      // monta o body da requisição
       const body = JSON.stringify({
         username: nome,
         email: email,
         phone: telefone,
         city: cidade
       })
-    
+      // faz a requisição em si
       const response = await fetch('/api/apiRequest', {
         method: 'POST',
         headers: {
@@ -42,6 +43,7 @@ const Form = () => {
 
   }
   useEffect(() => {
+    // utilizei um useEffect para adicionar o eventlistener e evitar que o form seja submetido mais de uma vez
     const handleFormSubmit = (event: { preventDefault: () => void }) => {
       event.preventDefault()
 
@@ -51,6 +53,8 @@ const Form = () => {
       let cidade = (document.getElementById('cidade') as HTMLInputElement).value
       let respostaPergunta = (document.getElementById('respostaPergunta') as HTMLInputElement).value
 
+      // utilizei esse sistema de validação para evitar bots, entretanto apenas utilizei isso pois estava no designe
+      // normalmente utilizaria um recaptcha do google por ser mais seguro
       if (respostaPergunta !== '12') {
         toast.error('A resposta da pergunta está errada! Tente novamente')
         return false
