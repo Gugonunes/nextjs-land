@@ -1,54 +1,78 @@
 import Button from './botao'
 import { useEffect } from 'react'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Form = () => {
   let inputClass = 'px-2 rounded-2xl w-full h-[32px] p-1'
 
-  const makeApiRequest = async (nome: string, email: string, phone: string, city: string) => {
+  const makeApiRequest = async (nome: string, email: string, telefone: string, cidade: string) => {
     try {
-      const response = await fetch('/api/apiRequest')
-      const users = await response.json()
+      const body = JSON.stringify({
+        username: nome,
+        email: email,
+        phone: telefone,
+        city: cidade
+      })
+    
+      const response = await fetch('/api/apiRequest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
+      if (!response.ok) {
+        // Verificar se o status não está OK
+        const respostaErro = await response.json() 
+        console.log(respostaErro)
+        toast.error(`Erro ao cadastrar: ${respostaErro.message || 'Erro desconhecido'}`)
+        return false
+      }
+    
+      // Continuar com o código se a resposta for bem-sucedida
+      const respostaSucesso = await response.json()
+      toast.success(`${respostaSucesso.message}`)
     } catch (error) {
+      // Lidar com erros de rede ou outras exceções
+      console.error(error)
       toast.error('Erro ao cadastrar! Tente novamente')
       return false
-    } finally {
-      toast.success('Cadastro realizado com sucesso!')
     }
+
   }
   useEffect(() => {
     const handleFormSubmit = (event: { preventDefault: () => void }) => {
-      event.preventDefault();
+      event.preventDefault()
 
-      let nome = (document.getElementById('username') as HTMLInputElement).value;
-      let email = (document.getElementById('email') as HTMLInputElement).value;
-      let phone = (document.getElementById('phone') as HTMLInputElement).value;
-      let city = (document.getElementById('city') as HTMLInputElement).value;
-      let respostaPergunta = (document.getElementById('respostaPergunta') as HTMLInputElement).value;
+      let nome = (document.getElementById('nome') as HTMLInputElement).value
+      let email = (document.getElementById('email') as HTMLInputElement).value
+      let telefone = (document.getElementById('telefone') as HTMLInputElement).value
+      let cidade = (document.getElementById('cidade') as HTMLInputElement).value
+      let respostaPergunta = (document.getElementById('respostaPergunta') as HTMLInputElement).value
 
       if (respostaPergunta !== '12') {
-        toast.error('A resposta da pergunta está errada! Tente novamente');
-        return false;
+        toast.error('A resposta da pergunta está errada! Tente novamente')
+        return false
       }
 
-      makeApiRequest(nome, email, phone, city);
-      return true;
-    };
+      makeApiRequest(nome, email, telefone, cidade)
+      return true
+    }
 
     if (typeof document !== 'undefined') {
-      let form = document.getElementById('form');
-      form?.addEventListener('submit', handleFormSubmit);
+      let form = document.getElementById('form')
+      form?.addEventListener('submit', handleFormSubmit)
     }
 
     return () => {
       // quando o componente é desmontado, retiramos o eventlistener
       if (typeof document !== 'undefined') {
-        let form = document.getElementById('form');
-        form?.removeEventListener('submit', handleFormSubmit);
+        let form = document.getElementById('form')
+        form?.removeEventListener('submit', handleFormSubmit)
       }
-    };
-  }, []);
+    }
+  }, [])
 
   return (
     <div className="max-w-[360px] mx-auto">
@@ -57,7 +81,7 @@ const Form = () => {
         <label >
           <b>Nome *</b>
           <br />
-          <input className={inputClass} type="text" id="username" required/>
+          <input className={inputClass} type="text" id="nome" required/>
         </label>
         <br />
         <label >
@@ -69,13 +93,13 @@ const Form = () => {
         <label>
           <b>Telefone Whatsapp(DDD + número) *</b>
           <br />
-          <input className={inputClass} id="phone" required/>
+          <input className={inputClass} id="telefone" required/>
         </label>
         <br />
         <label>
           <b>Qual é a sua cidade? *</b>
           <br />
-          <input className={inputClass} id="city" required/>
+          <input className={inputClass} id="cidade" required/>
         </label>
         <br />
         <label>

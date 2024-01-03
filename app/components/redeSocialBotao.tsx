@@ -16,4 +16,4 @@ const RedeSocialBotao: React.FC<RedeSocialButtonProps> = ({ label, icone, link }
   )
 }
 
-export default RedeSocialBotao;
+export default RedeSocialBotao
